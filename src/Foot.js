@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"; // ✅ React Router 네비게이
 import "./Foot.css"; // 스타일 파일 연결
 
 const Foot = () => {
-  const navigate = useNavigate(); // ✅ 네비게이션 훅 사용
+ 
 
   return (
     <footer className="footer">
@@ -17,9 +17,7 @@ const Foot = () => {
         <p className="newsletter-title">회원 가입하고 소식 받기</p>
         <p>Mercedes-Benz 계정을 등록하고 최신 소식을 받아보세요.</p>
         {/* ✅ 버튼 클릭 시 회원가입 페이지로 이동 */}
-        <button className="signup-button" onClick={() => navigate("signup")}>
-          Mercedes me Connect 회원가입
-        </button>
+      
       </div>
 
       {/* 푸터 네비게이션 */}
