@@ -27,7 +27,6 @@ const ProductDetail = () => {
   if (!product) {
     return <p className={style.loading}>상품 정보를 불러오는 중...</p>;
   }
-  console.log(product);
   return (
     <div className={style.container}>
       <div className={style.imgBox}>
@@ -36,7 +35,7 @@ const ProductDetail = () => {
           src={`/img/Productimg/${product.model}/${product.model}.png`}
           alt={product.model}
         />
-        <h2 className={style.name}>The new {`${product.model} ${product.brand}`}</h2>
+        <h2 className={style.name}>The new {`${product.model}` }<br/>{ `${product.brand}`}</h2>
       </div>
 
       <div className={style.description}>
