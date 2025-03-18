@@ -9,7 +9,7 @@ const Foot = () => {
     <footer className="footer">
       {/* 맨 위로 가기 버튼 */}
       <div className="back-to-top">
-        <span>맨 위로</span>
+        <span>맨 위로가기</span>
       </div>
 
       {/* 회원 가입 섹션 */}
