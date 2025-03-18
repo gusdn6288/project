@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./Product.module.css";
 import ProductList from "../../component/Productlists/Productlist";
 import ProductFilter from "../../component/Productlists/ProductFilter";
+import Foot from "../../Foot";
 
 function Product() {
   // ✅ 선택된 카테고리 상태 관리
@@ -31,6 +32,7 @@ function Product() {
       <div className={style.container}>
         <ProductList selectedCategories={selectedCategories} />
       </div>
+      <Foot/>
     </div>
   );
 }

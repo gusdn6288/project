@@ -7,10 +7,12 @@ import Signup from "./pages/Signup/Signup";
 import ProductDetail from "./pages/Detail/ProductDetail";
 import Wish from "./pages/Wish/Wish";
 import Navigation from "./Navigation";
+
 function Routing() {
   return (
 
     <BrowserRouter>
+    <Navigation/>
       <Routes>
         <Route path='/' element={<App />} />
         <Route path='/product' element={<Product />} /> 
