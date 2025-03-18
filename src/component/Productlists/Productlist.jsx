@@ -122,9 +122,6 @@ const ProductCard = ({ product, viewDetails, toggleWishlist, isWishlisted, index
       <button className={style.btnDetails} onClick={() => viewDetails(product.id)}>
         더 알아보기
       </button>
-
-  
-    
     </motion.div>
   );
 };

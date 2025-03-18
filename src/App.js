@@ -22,7 +22,6 @@ function App() {
           </div>
         </div>
       </div>
-
       <div>
       <h1 className="product-text">Our Models</h1>
       <ModelCard/>
