@@ -1,0 +1,126 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.carContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2개씩 정렬 */
+  gap: 60px;
+  position: relative;
+  padding:  40px;
+  top: 100px;
+  left: 400px;
+  justify-content: center;
+}
+
+.carBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%; /* 부모 grid 크기에 맞게 자동 조정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.carBanner:hover {
+  transform: scale(1.05);
+}
+
+.carText {
+  display: flex;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.carModel {
+  margin-left : 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.btnDetails {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btnDetails:hover {
+  background-color: #0056b3;
+}
+
+.carImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carImg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.noProducts {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* 반응형 디자인: 모바일에서는 1개씩 정렬 */
+@media (max-width: 768px) {
+  .car-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+/* ✅ 토글 스위치 버튼 */
+/* ✅ 토글 스위치 컨테이너 */
+.toggleContainer {
+  left:220px;
+  width: 50px;
+  height: 25px;
+  background: #eef7fc;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  transition: background 0.3s ease;
+}
+
+/* ✅ 아이콘 크기 조정 */
+.toggleSwitch {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* ✅ YES(위시리스트 추가)일 때 */
+.toggleSwitch.active {
+  left: 10px;
+
+}
+
+/* ✅ 아이콘 스타일 */
+.toggleIcon {
+  width: 30px;
+  height: 30px;
+}

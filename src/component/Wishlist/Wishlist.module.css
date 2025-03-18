@@ -1,0 +1,97 @@
+/* 위시리스트 전체 컨테이너 */
+.wishlistContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2개씩 정렬 */
+    gap: 60px;
+    position: relative;
+    padding:  40px;
+    justify-content: center;
+  }
+  
+  /* 개별 위시리스트 카드 */
+  .wishlistCard {
+    width: 600px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    padding: 15px;
+    position: relative; /* 이미지 정렬을 위한 relative */
+  }
+  
+  .wishlistCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* 자동차 브랜드 */
+  .carBrand {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  /* 자동차 모델 */
+  .carModel {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* 가격 스타일 */
+  .carPrice {
+    font-size: 16px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 5px;
+  }
+  
+  /* 성능 스펙 */
+  .carSpecs {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 3px;
+  }
+  
+  /* 🚗 자동차 이미지 컨테이너 (위 요청 반영) */
+  .model-image-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    right: 10px; /* 우측 정렬 */
+    bottom: 5px;
+  }
+  
+  .model-image-container img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .wishlistCard:hover .model-image-container img {
+    transform: scale(1.05); /* 호버 시 이미지 확대 */
+  }
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .wishlistContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .wishlistCard {
+      width: 90%;
+    }
+  
+    .model-image-container {
+      position: relative;
+      justify-content: center;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Gowun+Dodum&family=Nanum+Gothic&family=Sunflower:wght@300&display=swap');
+
+.box {
+  border: 1px solid gray;
+  max-width: 33%;
+  margin: 0 auto;
+  height: 28rem;
+  position: relative;
+  top:200px;
+  font-family: "Diphylleia", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: white;
+  text-align: center;
+}
+
+.box h2{
+text-align: center;
+
+}
+
+.logo {
+  z-index: 10;
+  width: 4%;
+  position: relative;
+  top:20px;
+}
+
+.background {
+  height: 100vh;
+  background-image: url('https://id.mercedes-benz.com/ciam/auth/static/img/StarsPattern.949f5d6a.jpg');
+}
+
+.password {
+  width: 90%;
+  height: 40px;
+  background-color: rgba(128, 128, 128, 0.099);
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.249);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.check {
+  margin-left: 5px;
+  background-color: rgba(128, 128, 128, 0.503);
+  padding: 0px 6px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.login {
+  width: 70%;
+  height: 40px;
+  background-color: rgba(128, 128, 128, 0.099);
+  outline: none;
+  border: 1px solid rgba(128, 128, 128, 0.249);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.box input:focus {
+  border: 2px solid rgba(0, 0, 255, 0.288);
+}
+
+.line {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color:black;
+  font-size: 1.2rem;
+  margin: 8px 0px;
+}
+
+.line::before{
+  content: "";
+  flex-grow: 1;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.418);
+  height: 1px;
+  margin: 0px 16px;
+}
+
+.line::after {
+  content: "";
+  flex-grow: 1;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.418);
+  height: 1px;
+  margin: 0px 16px;
+}
+
+.btn {
+  width: 90%;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  margin: 10px 20px;
+  border: 0px;
+  background-color: rgba(26, 134, 216, 0.722);
+  color: white;
+  cursor: pointer;
+}
+
+.fail {
+  width: 90%;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  margin: 10px 20px;
+  border: 0px;
+  background-color: rgba(31, 34, 37, 0.833);
+  color: gray;
+}
+
+
+.msg {
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.msg span {
+  color:rgba(26, 134, 216, 0.722);
+  cursor: pointer;
+}
+
+.empty {
+  color: red;
+  font-size: 0.8rem;
+  margin:0;
+}
+
+.hidden {
+  display: none;
+}
+

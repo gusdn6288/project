@@ -1,0 +1,19 @@
+.car-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(600px, 1fr)); /* 2개씩 정렬, 최소 300px */
+  gap: 60px;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 800px; /* 최대 너비 제한 */
+  margin-left: 450px;
+  margin-top: 0px;
+}
+.model-overview {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 100px;
+
+}
