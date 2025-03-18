@@ -5,7 +5,7 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
-    <dvi className="App">
+    <div className="App">
     <header className="nav-bar">
   <nav className="nav-left">
     <a href="product">Models</a>
@@ -25,7 +25,7 @@ function Navigation() {
     <a href="login">Login</a>
   </nav>
 </header>
-    </dvi>
+    </div>
   );
 }
 

@@ -1,6 +1,8 @@
 .footer {
     background-color: black;
     color: white;
+    position:sticky;
+    top:100vh;
     padding: 40px 10%;
     font-family: Arial, sans-serif;
   }
