@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import style from "./ProductDetail.module.css";
+import Foot from "../../Foot";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -108,6 +109,7 @@ const ProductDetail = () => {
       <button className={style.backButton} onClick={() => navigate(-1)}>
         목록으로 돌아가기
       </button>
+      <Foot/>
     </div>
   );
 };
