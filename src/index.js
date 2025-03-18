@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Navigation from './Navigation';
 import Routing from './Routing';
+import Foot from './Foot';
 
 
 
@@ -13,6 +14,7 @@ root.render(
   <React.StrictMode>
       <Navigation/>
       <Routing/>
+      <Foot/>
   </React.StrictMode>
 );
 
