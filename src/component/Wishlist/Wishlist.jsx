@@ -38,7 +38,7 @@ const Wishlist = () => {
           newSet.delete(carId);
           return newSet;
         });
-        alert("위시리스트에서 제거되었습니다.");
+  
       }
     } catch (error) {
       console.error("위시리스트 제거 중 오류 발생:", error);
