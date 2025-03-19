@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
 import style from "./Wishlist.module.css";
 
 const Wishlist = () => {
-  const [wishlist, setWishlist] = useState([]); // 위시리스트 배열
-  const [wishlistIds, setWishlistIds] = useState(new Set()); // ID 저장 (Set 활용)
-  const [userEmail, setUserEmail] = useState(null); // ✅ 로그인된 사용자 이메일 저장
+  const [wishlist, setWishlist] = useState([]); // 위시리스트 항목
+  const [wishlistIds, setWishlistIds] = useState(new Set()); // UI 상태 관리
+  const [wishlistChanges, setWishlistChanges] = useState(new Map()); // 변경사항 저장
+  const [userEmail, setUserEmail] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation(); // 현재 페이지 감지
 
   useEffect(() => {
     checkLoginStatus();
@@ -17,41 +21,33 @@ const Wishlist = () => {
     }
   }, [userEmail]);
 
-  // ✅ 로그인 상태 체크 및 user_email 가져오기
+
   const checkLoginStatus = () => {
-    const storedEmail = sessionStorage.getItem("email"); // ✅ sessionStorage에서 user_email 가져오기
-
-    console.log("🔍 세션에서 가져온 사용자 이메일:", storedEmail); // 디버깅 로그 추가
-
+    const storedEmail = sessionStorage.getItem("email");
     if (storedEmail && storedEmail.trim()) {
-      setUserEmail(storedEmail.trim()); // 공백 제거 후 저장
+      setUserEmail(storedEmail.trim());
     } else {
       console.error("⚠️ 로그인된 이메일을 가져오지 못했습니다!");
     }
   };
 
-  // ✅ 위시리스트 불러오기 (user_email 기반)
+
   const fetchWishlist = async () => {
-    if (!userEmail) {
-      console.error("⚠️ user_email이 존재하지 않습니다.");
-      return;
-    }
-    
+    if (!userEmail) return;
+
     try {
       const response = await axios.get(`http://localhost:8080/wishlist/${userEmail}`);
-      console.log("📌 위시리스트 데이터:", response.data); // 🔥 디버깅용 로그
       setWishlist(response.data);
-      setWishlistIds(new Set(response.data.map((item) => item.car_id))); // Set으로 중복 방지
+      setWishlistIds(new Set(response.data.map((item) => item.car_id))); // UI 상태 유지
     } catch (error) {
       console.error("⚠️ 위시리스트를 불러오는 중 오류 발생:", error);
     }
   };
 
-  // ✅ 위시리스트에서 제거하기 (user_email 기반)
-  const toggleWishlist = async (carId) => {
+ 
+  const toggleWishlist = (carId) => {
     if (!userEmail) {
-      console.error("⚠️ user_email 없음 (undefined 또는 null)");
-      alert("사용자 정보를 불러오는 중 오류 발생");
+      alert("로그인이 필요합니다.");
       return;
     }
 
@@ -60,21 +56,90 @@ const Wishlist = () => {
       return;
     }
 
-    try {
-      if (wishlistIds.has(carId)) {
-        // 이미 존재하면 삭제
-        await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`);
-        setWishlist((prev) => prev.filter((item) => item.car_id !== carId)); // UI에서 제거
-        setWishlistIds((prev) => {
-          const newSet = new Set(prev);
-          newSet.delete(carId);
-          return newSet;
-        });
+    // 최신 상태를 기반으로 즉시 반영
+    setWishlistChanges((prevChanges) => {
+      const newChanges = new Map(prevChanges);
+
+      if (newChanges.has(carId)) {
+        newChanges.delete(carId); // 취소 (이전 변경 사항 제거)
+      } else {
+        newChanges.set(carId, wishlistIds.has(carId) ? "remove" : "add");
       }
+      return newChanges;
+    });
+
+    // UI에서 즉시 반영 (최신 상태 유지)
+    setWishlistIds((prevIds) => {
+      const updatedIds = new Set(prevIds);
+      if (updatedIds.has(carId)) {
+        updatedIds.delete(carId);
+      } else {
+        updatedIds.add(carId);
+      }
+      return updatedIds;
+    });
+
+    // UI에서도 즉시 리스트 반영
+    setWishlist((prevWishlist) =>
+      prevWishlist.filter((item) => wishlistIds.has(item.car_id) || wishlistChanges.has(item.car_id))
+    );
+  };
+
+
+  const syncWishlistToDB = async () => {
+    if (wishlistChanges.size === 0 || !userEmail) return;
+
+    console.log("🔄 위시리스트 변경사항 DB에 반영 중...");
+
+    try {
+      const requests = [];
+
+      wishlistChanges.forEach((action, carId) => {
+        if (action === "add") {
+          requests.push(
+            axios.post("http://localhost:8080/wishlist/add", {
+              user_email: userEmail,
+              car_id: carId,
+            })
+          );
+        } else if (action === "remove") {
+          requests.push(axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`));
+        }
+      });
+
+      await Promise.all(requests); // 모든 요청을 병렬로 처리
+
+      console.log("✅ 위시리스트 변경사항이 DB에 반영되었습니다.");
+      setWishlistChanges(new Map()); // 변경 사항 초기화
     } catch (error) {
-      console.error("⚠️ 위시리스트 제거 중 오류 발생:", error);
-      alert("오류 발생: 위시리스트 제거 실패");
+      console.error("⚠️ 위시리스트 동기화 중 오류 발생:", error);
     }
+  };
+
+
+  useEffect(() => {
+    if (wishlistChanges.size > 0) {
+      syncWishlistToDB();
+    }
+  }, [location]); // `location`이 변경될 때 실행 (페이지 이동 감지)
+
+
+  useEffect(() => {
+    window.addEventListener("beforeunload", syncWishlistToDB);
+    return () => {
+      window.removeEventListener("beforeunload", syncWishlistToDB);
+    };
+  }, [wishlistChanges, userEmail]);
+
+  const getWishlistStatus = (carId) => {
+    if (wishlistChanges.has(carId)) {
+      return wishlistChanges.get(carId) === "add"; // 변경된 상태 반영
+    }
+    return wishlistIds.has(carId); // 기존 상태 반영
+  };
+
+  const viewDetails = (carId) => {
+    navigate(`/productDetail/${carId}`);
   };
 
   return (
@@ -84,15 +149,34 @@ const Wishlist = () => {
         <p>위시리스트가 비어 있습니다.</p>
       ) : (
         <div className={style.wishlistContainer}>
-          {wishlist.map((item) => (
-            <div key={item.car_id} className={style.wishlistCard}>
-              <div className={style.carDetails}>
-                <p className={style.carModel}>{item.model || "미확인 모델"}</p>
-                <button className={style.btnRemove} onClick={() => toggleWishlist(item.car_id)}>X</button>
-                <img src={`/img/Productimg/${item.model}.png`} alt={item.model} className={style.carImage} />
+          {wishlist.map((item) => {
+            const isWishlisted = getWishlistStatus(item.car_id); // UI 상태 반영
+
+            return (
+              <div key={item.car_id} className={style.wishlistCard}>
+                <div className={style.carDetails}>
+                  <p className={style.carModel}>{item.model || "미확인 모델"}</p>
+
+            
+                  <div className={style.toggleContainer} onClick={() => toggleWishlist(item.car_id)}>
+                    <div className={`${style.toggleSwitch} ${isWishlisted ? style.active : ""}`}>
+                      <img
+                        src={isWishlisted ? "/img/star2.png" : "/img/star1.png"}
+                        alt={isWishlisted ? "위시리스트 추가됨" : "위시리스트 제거됨"}
+                        className={style.toggleIcon}
+                      />
+                    </div>
+                  </div>
+
+                  <img src={`/img/Productimg/${item.model}.png`} alt={item.model} className={style.carImage} />
+
+                  <button className={style.btnDetails} onClick={() => viewDetails(item.car_id)}>
+                    View Models
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

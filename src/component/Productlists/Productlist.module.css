@@ -46,7 +46,7 @@
 
 .btnDetails {
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: rgb(153, 151, 151);  
   color: white;
   border: none;
   border-radius: 5px;
@@ -55,7 +55,8 @@
 }
 
 .btnDetails:hover {
-  background-color: #0056b3;
+
+  background-color: black;
 }
 
 .carImage {
@@ -76,7 +77,6 @@
   color: #888;
 }
 
-/* 반응형 디자인: 모바일에서는 1개씩 정렬 */
 @media (max-width: 768px) {
   .car-container {
     grid-template-columns: repeat(1, 1fr);
@@ -84,13 +84,11 @@
 }
 
 
-/* ✅ 토글 스위치 버튼 */
-/* ✅ 토글 스위치 컨테이너 */
+
 .toggleContainer {
   left:220px;
   width: 50px;
   height: 25px;
-  background: #eef7fc;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -100,7 +98,6 @@
   transition: background 0.3s ease;
 }
 
-/* ✅ 아이콘 크기 조정 */
 .toggleSwitch {
   width: 40px;
   height: 40px;
@@ -113,13 +110,11 @@
   transition: all 0.3s ease;
 }
 
-/* ✅ YES(위시리스트 추가)일 때 */
 .toggleSwitch.active {
   left: 10px;
 
 }
 
-/* ✅ 아이콘 스타일 */
 .toggleIcon {
   width: 30px;
   height: 30px;
