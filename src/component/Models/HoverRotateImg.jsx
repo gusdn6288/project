@@ -30,7 +30,7 @@ const HoverRotateImg = ({ modelName, isHovered }) => {
       <img
         src={`/img/${modelName}/${modelName}${index + 1}.png`} //  변경된 이미지 경로
         alt={`${modelName} ${index + 1}`}
-        style={{ width: "100%", height: "auto", transition: "opacity 0.3s ease-in-out" }}
+        style={{ width: "100%", height: "auto", transition: "opacity 0.3s ease-in-out", cursor:"pointer" }}
       />
     </div>
   );
