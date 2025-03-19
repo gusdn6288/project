@@ -142,7 +142,6 @@ function Main() {
     </video>
   </div>
 
-  {/* 텍스트 설명 섹션 */}
   <div className={style.textContainer}>
     <h2>자동차의 시작,
     138년의 혁신</h2>
