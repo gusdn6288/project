@@ -61,6 +61,7 @@
   transition: all 0.3s ease;
 }
 
+
 .btnOutline:hover {
   background: white;
   color: black;
@@ -81,3 +82,256 @@
   background: #0056b3;
 }
 
+
+.productText{
+  margin: 30px;
+  
+}
+.banner{
+background: black;
+padding-bottom: 100px;
+
+}
+.bannerItem
+{
+  position: relative;
+  height: 400px; /* 🔥 적절한 높이 조정 */
+  display: flex;
+  padding: 50px;
+  margin-left: 0px;
+  text-align: left;
+  justify-content: left;
+  flex-direction: row;
+}
+.bannerItem img{
+  width: auto;
+  height: 400px;;
+}
+.bannerItem p{
+  color: white;
+  margin-top: 10px;
+
+  
+  font-size: 1.4rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 30px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bannerItem h1{
+  color: white;
+  font-size: 2rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  margin-top:150px ;
+  letter-spacing: 1px;
+  margin-left: 30px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.bannercontainer {
+  margin: 100px;
+  margin-left: 0px;
+  position: relative;
+  width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: black;
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  padding-bottom: 50px; /* 🔥 배너 하단과 간격 조정 */
+  overflow: hidden;
+   border: 0.5px solid rgba(200, 200, 200, 0.281); /* ✅ 회색 테두리 추가 */
+}
+.bannercontainerImg {
+  position: relative;
+  width: 100%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: linear-gradient(to top , rgb(0, 0, 0),rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),
+              url('https://www.mercedes-benz.co.kr/content/dam/south-korea/passenger-cars/home/2025/MTC_Mar_kv_ver4_1884x1884.jpg/1741337642264.jpg?im=Resize=(2000);Crop,rect=(0,437,2000,1125)')
+              center/cover no-repeat;
+  display: flex;
+  padding-bottom: 50px; /* 🔥 배너 하단과 간격 조정 */
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.bannercontainerImg:hover {
+  transform: scale(1.05); /* 5% 확대 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+}
+
+.bannercontainer2 {
+  margin: 100px;
+  margin-bottom: 20px;
+  margin-left: 30px;
+  margin-right: 50px;
+  position: relative;
+  width: 47%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: black;
+  display: flex;
+  margin-left: 0px;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  padding-bottom: 50px; /* 🔥 배너 하단과 간격 조정 */
+  overflow: hidden;
+  border: 0.5px solid rgba(200, 200, 200, 0.281); /* ✅ 회색 테두리 추가 */
+}
+.bannercontainerImg2 {
+  position: relative;
+  width: 100%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: linear-gradient(to top , rgb(0, 0, 0),rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),
+              url('https://www.mercedes-benz.co.kr/content/dam/south-korea/passenger-cars/homepage/teasers/SimpleTeaser_1.jpg/1741337642264.jpg?im=Resize=(1200);Crop,rect=(273,0,654,1163)')
+              center/cover no-repeat;
+  display: flex;
+  padding-bottom: 50px; /* 🔥 배너 하단과 간격 조정 */
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+/* ✅ Hover 시 이미지 확대 */
+.bannercontainerImg2:hover {
+  transform: scale(1.05); /* 5% 확대 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+}
+
+
+
+.bannercontainer h1 {
+  color: white;
+  font-size: 2.8rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 50px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bannercontainer p {
+  color: white;
+  margin-top: 100px;
+  font-size: 1.4rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 50px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bannercontainer2 h1 {
+  color: white;
+  font-size: 2rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  position: absolute;
+  top: 85%;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bannercontainer2 p {
+  color: white;
+  font-size: 1.2rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  position: absolute;
+  top: 70%;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bannerItmeimg{
+  display: flex;
+  padding: 0px;
+  margin-top: 10xp;
+  text-align: left;
+  justify-content: center;
+  flex-direction: row;
+  
+}
+.bannerItmeimg2{
+  display: flex;
+
+  padding: 0px;
+  text-align: left;
+  justify-content: center;
+  flex-direction: row;
+  padding-left :50px;
+}
+
+
+.bannerItmeimg2 .img1{
+  position: relative;
+  width: 100%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: linear-gradient(to top , rgb(0, 0, 0),rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),
+              url('https://www.mercedes-benz.co.kr/content/dam/south-korea/passenger-cars/home/2024/VSC_KV_1884x1884_2.jpg/1741337642264.jpg?im=Resize=(1200);Crop,rect=(262,0,675,1200)')
+              center/cover no-repeat;
+  display: flex;
+
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+
+.bannerItmeimg2 .img2{
+  position: relative;
+  width: 100%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: linear-gradient(to top , rgb(0, 0, 0),rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),
+              url('https://www.mercedes-benz.co.kr/content/dam/south-korea/passenger-cars/home/2025/OW-Main-recommendations-amg-experience-kv-1884x1884.jpg/1741337642264.jpg?im=Resize=(1200);Crop,rect=(262,0,675,1200)')
+              center/cover no-repeat;
+  display: flex;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+.bannerItmeimg2 .img3{
+  position: relative;
+  width: 100%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: linear-gradient(to top , rgb(0, 0, 0),rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.445), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0)),
+              url('https://www.mercedes-benz.co.kr/content/dam/south-korea/passenger-cars/home/2025/OW-Main-recommendations-SUV-Experience-Center-kv-1884x1884.jpg/1741337642264.jpg?im=Resize=(1200);Crop,rect=(262,0,675,1200)')
+              center/cover no-repeat;
+  display: flex;
+  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.bannerItmeimg2 .container1{
+  margin: 50px;
+  margin-top: 0px;
+  position: relative;
+  width: 35%;
+  height: 800px; /* 🔥 적절한 높이 조정 */
+  background: black;
+  display: flex;
+  margin-left: 0px;
+  justify-content: center;
+  text-align: left;
+  flex-direction: column;
+  padding-bottom: 100px; /* 🔥 배너 하단과 간격 조정 */
+  overflow: hidden;
+  border: 0.5px solid rgba(200, 200, 200, 0.281); /* ✅ 회색 테두리 추가 */
+}
+
+
+.bannerItmeimg2 .container1 h1{
+  color: white;
+  font-size: 2rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  position: absolute;
+  top: 83%;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.bannerItmeimg2 .container1 p{
+  color: white;
+  font-size: 1rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  position: absolute;
+  top: 77%;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
