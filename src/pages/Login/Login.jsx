@@ -2,13 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import style from "./Login.module.css";
 import CryptoJS from "crypto-js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const isEmailValid =/^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i.test(data.email);
   const [isEmail, setIsEmail] = useState(false);
   const navigate = useNavigate();
   const [message, setMessage] = useState({
@@ -28,10 +29,9 @@ function Login() {
 
   const validateInput = useCallback(
     (name, value) => {
-      const emailRegEx =
-        /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
+      
       const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
-
+      const emailRegEx =/^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i
       let errorMsg = "";
       let valid = false;
 
@@ -123,9 +123,16 @@ function Login() {
             onBlur={(e) => validateInput(e.target.name, e.target.value)}
             required
           />
-          <span onClick={emailCheck} className={style.check}>
-            이메일 확인
-          </span>
+          {isEmailValid ? (
+            <span onClick={emailCheck} className={style.check}>
+              이메일 확인
+            </span>
+          ) : (
+            <span onClick={emailCheck} className={style.noCheck}>
+              이메일 확인
+            </span>
+          )}
+
           <p className={message.email ? style.empty : style.hidden}>
             {message.email}
           </p>
@@ -158,7 +165,7 @@ function Login() {
           사용자 계정 만들기
         </button>
         <div className={style.msg}>
-          아이디가 없다면? <span>회원가입</span>
+          아이디가 없다면? <span><Link to="/signup">회원가입</Link></span>
         </div>
       </form>
     </div>
