@@ -464,10 +464,10 @@ padding-bottom: 100px;
   margin: 50px auto;
 }
 
-.videoContainer {
+.videoContainer1 {
   width: 150%;
   max-height: 600px;
-  max-width: 900px; /* 원하는 최대 크기 설정 */
+  max-width: 800px; /* 원하는 최대 크기 설정 */
   margin: 0 auto; /* 가운데 정렬 */
   overflow: hidden; /* 넘치는 부분 숨기기 */
 

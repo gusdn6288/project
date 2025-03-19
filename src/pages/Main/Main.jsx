@@ -135,14 +135,13 @@ function Main() {
       </div>
       <div className={style.explanationContainer}>
   {/* 동영상 추가 */}
-  <div className={style.videoContainer}>
+  <div className={style.videoContainer1}>
     <video autoPlay loop muted playsInline className={style.video}>
       <source src="https://www.mercedes-benz.co.kr/content/dam/hq/passengercars/mb-oc/liI-tvc-30s-eqs-wodp-wsf-weotr-16-9-vo-en-hqmaster-l-ending-h264-1-1.mp4" type="video/mp4" />
       브라우저가 비디오 태그를 지원하지 않습니다.
     </video>
   </div>
 
-  {/* 텍스트 설명 섹션 */}
   <div className={style.textContainer}>
     <h2>자동차의 시작,
     138년의 혁신</h2>
