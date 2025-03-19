@@ -70,13 +70,11 @@ const checkLoginStatus = () => {
         alert("로그인 후 이용 가능합니다.");
         return;
     }
-
     if (!userEmail || userEmail.trim() === "") {
         console.error("⚠️ User Email 없음 (undefined 또는 null)");
         alert("사용자 정보를 불러오는 중 오류 발생");
         return;
     }
-
     try {
         if (wishlist.has(carId)) {
             await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`);
