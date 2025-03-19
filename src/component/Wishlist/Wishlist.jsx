@@ -6,8 +6,10 @@ import style from "./Wishlist.module.css";
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [userEmail, setUserEmail] = useState(null);
+  const [selected,setSelected] = useState(0);
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     checkLoginStatus();
   }, []);
@@ -46,18 +48,15 @@ const Wishlist = () => {
       alert("로그인이 필요합니다.");
       return;
     }
-
     if (!carId) {
       alert("올바른 자동차 ID가 아닙니다.");
       return;
     }
-
     try {
       await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`);
 
       // 🚀 UI에서 즉시 반영 (삭제된 항목 제외)
       setWishlist((prevWishlist) => prevWishlist.filter((item) => item.car_id !== carId));
-
       console.log(`✅ ${carId} 위시리스트에서 삭제 완료`);
     } catch (error) {
       console.error("⚠️ 위시리스트 삭제 중 오류 발생:", error);
@@ -68,9 +67,10 @@ const Wishlist = () => {
     navigate(`/productDetail/${carId}`);
   };
 
+  console.log(wishlist);
   return (
-    <div className="container mt-4">
-      <h2 className="text-2xl font-bold mb-4">위시리스트</h2>
+    <div className={style.container} >
+      <h2 >위시리스트</h2>
       {wishlist.length === 0 ? (
         <p>위시리스트가 비어 있습니다.</p>
       ) : (
@@ -92,7 +92,6 @@ const Wishlist = () => {
                 </div>
 
                 <img src={`/img/Productimg/${item.model}.png`} alt={item.model} className={style.carImage} />
-
                 <button className={style.btnDetails} onClick={() => viewDetails(item.car_id)}>
                   View Models
                 </button>
