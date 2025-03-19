@@ -4,8 +4,8 @@ body {
   font-family: "Diphylleia", serif;
   font-weight: 400;
   font-style: normal;
-  -webkit-font-smoothing :antialiased;
-  -moz-osx-font-smoothin :grayscale;
 }
 
-
+p {
+  font-size: 1.5rem;
+}

@@ -30,7 +30,10 @@
 .navRight {
   display: flex;
   gap: 20px;
+  position: relative;
+  top:22px;
   padding-right: 100px;
+  cursor: pointer;
 }
 
 /* 로고 크기 조정 */
@@ -42,15 +45,9 @@
 .navLeft a, .navRight a {
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1.5rem;
 }
 
 .navLeft a:hover, .navRight a:hover {
   color: #61dafb;
-}
-
-.productText{
-  text-align: left;
-  font-size:45px;
-  padding-left : 100px;
 }
