@@ -6,7 +6,7 @@ import Login from "./pages/Login/Login"; //
 import Signup from "./pages/Signup/Signup";
 import ProductDetail from "./pages/Detail/ProductDetail";
 import Wish from "./pages/Wish/Wish";
-import Navigation from "./Navigation";
+import Navigation from "./component/Navigation/Navigation";
 
 function Routing() {
   return (

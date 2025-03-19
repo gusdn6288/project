@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Main from "./pages/Main/Main";
-import Foot from "./Foot";
+import Foot from "./component/Footer/Foot";
 
 
 function App() {
