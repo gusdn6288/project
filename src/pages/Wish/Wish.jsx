@@ -1,6 +1,6 @@
 import React from "react";
 import Wishlist from "../../component/Wishlist/Wishlist";
-import Foot from "../../Foot";
+import Foot from "../../component/Footer/Foot";
 
 function Wish() {
   return (

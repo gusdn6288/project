@@ -2,8 +2,10 @@ import { useCallback, useState } from "react";
 import style from "./SignUp.module.css";
 import CryptoJS from "crypto-js";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
     username: "",
@@ -76,7 +78,7 @@ function Signup() {
           "http://localhost:8080/insertUser",
           userData
         );
-        console.log(response);
+        navigate("/login");
       } catch (error) {
         console.error(error);
       }
@@ -157,7 +159,7 @@ function Signup() {
           사용자 계정 만들기
         </button>
         <div className={style.msg}>
-          아이디가 이미 존재하다면?  <span>로그인</span>
+          아이디가 이미 존재하다면?  <Link to="/login"><span>로그인</span></Link>
         </div>
       </form>
     </div>
