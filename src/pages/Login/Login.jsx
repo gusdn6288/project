@@ -73,9 +73,11 @@ function Login() {
         const token = response.data.Authorization;
         sessionStorage.setItem("Authorization", token);
         sessionStorage.setItem("username", response.data.username);
+        sessionStorage.setItem("email", data.email);
         axios.defaults.headers.common["Authorization"] = token;
 
         navigate("/");
+        window.location.reload();
       } catch (error) {
         console.error(error);
       }
