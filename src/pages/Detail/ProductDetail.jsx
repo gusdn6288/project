@@ -60,8 +60,10 @@ const ProductDetail = () => {
           alt={product.model}
         />
         <div className={style.bannerText}>
-          <p>{`${product.model} ${product.brand}`}</p>
-          <p>{`${product.model} ${product.brand}`}에 대해 알아보세요.</p>
+          <h2>{`${product.model} ${product.brand}`}에 대해 알아보세요.</h2>
+          <p>Experience the epitome of luxury and performance.</p>
+          <p>Where cutting-edge technology meets timeless design.</p>
+          <p>More than a car, it's a statement.</p>
         </div>
       </div>
       <div className={style.mainContainer}>
@@ -106,9 +108,6 @@ const ProductDetail = () => {
             alt={product.model}
           />
       </div>
-      <button className={style.backButton} onClick={() => navigate(-1)}>
-        목록으로 돌아가기
-      </button>
       <Foot/>
     </div>
   );
