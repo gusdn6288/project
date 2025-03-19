@@ -238,7 +238,7 @@ padding-bottom: 100px;
   letter-spacing: 1px;
   margin-left: 10px;
   position: absolute;
-  top: 70%;
+  top: 76%;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -274,6 +274,20 @@ padding-bottom: 100px;
   transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 }
 
+/* ✅ Hover 시 이미지 확대 */
+.bannerItmeimg2 .img1:hover {
+  transform: scale(1.05); /* 5% 확대 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+}
+
+.bannerItmeimg2 .img2:hover {
+  transform: scale(1.05); /* 5% 확대 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+}
+.bannerItmeimg2 .img3:hover {
+  transform: scale(1.05); /* 5% 확대 */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* 그림자 효과 */
+}
 
 .bannerItmeimg2 .img2{
   position: relative;
@@ -334,4 +348,166 @@ padding-bottom: 100px;
   position: absolute;
   top: 77%;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.sliderContainer {
+  width: 100%;
+  margin: 10px auto;
+  padding-top: 50px;
+}
+
+.sliderContainer h1{
+  color: black;
+  font-size: 3rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+  margin-left: 50px;
+
+}
+.sliderContainer h4{
+  color: black;
+  font-size: 1.2rem; /* 🔥 크기 키우기 */
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.sliderContainer p{
+  color: black;
+  font-size: 1rem; /* 🔥 크기 키우기 */
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+
+.sliderItem {
+  text-align: center;
+  padding: 50px; /* 사진 주변 여백 추가 */
+  padding-top:0px;
+}
+
+.sliderItem img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  padding: 10px; /* 슬라이드 사이 간격 */
+}
+
+.slick-dots li button:before {
+  color: white !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: white !important;
+}
+
+.explanation {
+  width: 100%;
+  margin: 50px ;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 50px;
+  display: flex;
+
+  text-align: left;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.explanation h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  
+  
+}
+
+
+.explanation p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.explanation img{
+  width: auto;
+  margin-left: 0px;
+  margin-right: 50px;
+}
+
+.explanation .btnPrimary {
+  background-color: #0057b8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.explanation .btnPrimary:hover {
+  background-color: #003f8a;
+}
+
+.explanationContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px; /* 동영상과 텍스트 사이 간격 */
+  width: 90%;
+  margin: 50px auto;
+}
+
+.videoContainer {
+  width: 150%;
+  max-height: 600px;
+  max-width: 900px; /* 원하는 최대 크기 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+  overflow: hidden; /* 넘치는 부분 숨기기 */
+
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* 원본 비율 유지 */
+  object-fit: cover; /* 비디오가 컨테이너를 꽉 채우도록 조정 */
+}
+
+.textContainer {
+  flex: 1;
+  max-width: 50%;
+  text-align: left;
+}
+
+.textContainer h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.textContainer p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.btnPrimary {
+  background-color: #0057b8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btnPrimary:hover {
+  background-color: #003f8a;
 }
