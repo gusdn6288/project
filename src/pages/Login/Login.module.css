@@ -43,16 +43,25 @@ text-align: center;
 
 .check {
   margin-left: 5px;
+  background-color: rgba(7, 138, 203, 0.942);
+  padding: 0px 6px;
+  padding-top: 8px;
+  padding-bottom: 12px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.noCheck {
+  margin-left: 5px;
   background-color: rgba(128, 128, 128, 0.503);
   padding: 0px 6px;
   padding-top: 8px;
   padding-bottom: 12px;
   border-radius: 10px;
-  cursor: pointer;
 }
-
 .login {
-  width: 70%;
+  width: 74%;
   height: 40px;
   background-color: rgba(128, 128, 128, 0.099);
   outline: none;
