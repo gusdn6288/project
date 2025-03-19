@@ -21,7 +21,6 @@ function Product() {
     }
   }, [modelName]);
 
-
   // ✅ 카테고리 토글 기능
   const toggleCategory = (category) => {
     setSelectedCategories((prev) => {
