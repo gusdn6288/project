@@ -37,6 +37,7 @@ function Navigation() {
       );
       sessionStorage.removeItem("Authorization");
       sessionStorage.removeItem("username");
+      sessionStorage.removeItem("email");
       axios.defaults.headers.common["Authorization"] = "";
       window.location.reload();
     } catch (error) {
