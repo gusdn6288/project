@@ -24,7 +24,7 @@ const ProductFilter = ({ selectedCategories, toggleCategory }) => {
         <motion.button
           key={category.name}
           className={`${style.filterButton} ${
-            selectedCategories.has(category.name) ? style.selected : ""
+            selectedCategories.has(category.id) ? style.selected : ""
           }`}
           onClick={() => toggleCategory(category.name)}
           initial={{ opacity: 0, y: 20 }} // 처음에 아래에서 올라오게 함
