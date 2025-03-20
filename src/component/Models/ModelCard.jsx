@@ -5,10 +5,10 @@ import "./ModelCardItem.css";
 
 const ModelCard = () => {
   const [models, setModels] = useState([]);
-
   useEffect(() => {
     axios
-      .get("http://localhost:8080/getAllModels") //  API 요청 유지
+      .get("http://localhost:8080/getAllModels",
+      ) //  API 요청 유지
       .then((response) => {
         setModels(response.data)
       })
