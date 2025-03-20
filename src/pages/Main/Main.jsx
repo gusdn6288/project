@@ -3,6 +3,7 @@ import style from "./Main.module.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   // 슬라이더 설정
@@ -15,7 +16,16 @@ function Main() {
     autoplay: true,
     autoplaySpeed: 3000,
   };
+  const navigate = useNavigate();
+  const movePage = () => {
+    navigate('/product',{
+    });
+  }
 
+  const movedetail = () => {
+    navigate('/productDetail/2',{
+    });
+  }
   return (
     <div className={style.container}>
       {/* 배경 비디오 섹션 */}
@@ -27,8 +37,8 @@ function Main() {
           <h2>새롭게, 한계를 뛰어넘다.</h2>
           <p>올-뉴 G 580.</p>
           <div className={style.buttonGroup}>
-            <button className={style.btnOutline}>자세히 보기</button>
-            <button className={style.btnPrimary}>메르세데스-벤츠 스토어</button>
+            <button className={style.btnOutline}onClick={movedetail}>자세히 보기</button>
+            <button className={style.btnPrimary } onClick={movePage} >메르세데스-벤츠 스토어</button>
           </div>
         </div>
       </div>
@@ -125,11 +135,10 @@ function Main() {
           내비게이션 등 다양한 MBUX 멀티미디어 시스템을 직접적으로 제어할 수 있으며, 
           중앙 디스플레이 하단에 위치한 스위치 패널을 통해 편리하게 온도 조절이 가능합니다.
         </p>
-        <button className={style.btnPrimary}>더 알아보기</button>
         </div>
         <div>
         <img src="https://www.mercedes-benz.co.kr/content/dam/hq/passengercars/mb-oc/mbc98869.jpg/1741075029687.jpg?im=Resize=(800);Crop,rect=(0,0,800,600)" alt="서비스 이미지 4" />
-         
+
         </div>
         
       </div>
@@ -148,7 +157,7 @@ function Main() {
     <p>
     138년간의 개척 정신과 혁신을 이어 받아 순수 전기 시대를 선도하는 메르세데스-벤츠는 단순 이동 수단이 아닌 그 이상을 제공합니다. 최첨단 기술 덕분에 모바일 오피스, 안전한 공간, 프라이빗한 영화관 등이 한 공간에서 만나 당신의 모든 니즈를 충족시킵니다.
     </p>
-    <button className={style.btnPrimary}>더 알아보기</button>
+
   </div>
 </div>
 

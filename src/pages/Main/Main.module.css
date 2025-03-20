@@ -437,7 +437,7 @@ padding-bottom: 100px;
 }
 .explanation img{
   width: auto;
-  margin-left: 0px;
+  margin-left: 100px;
   margin-right: 50px;
 }
 
@@ -456,13 +456,16 @@ padding-bottom: 100px;
 }
 
 .explanationContainer {
+  
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px; /* 동영상과 텍스트 사이 간격 */
   width: 90%;
   margin: 50px auto;
+  margin-top: 150px;
 }
+
 
 .videoContainer1 {
   width: 150%;
@@ -475,6 +478,7 @@ padding-bottom: 100px;
 
 .video {
   width: 100%;
+  margin-right: 100px;
   height: auto;
   aspect-ratio: 16 / 9; /* 원본 비율 유지 */
   object-fit: cover; /* 비디오가 컨테이너를 꽉 채우도록 조정 */
@@ -483,6 +487,7 @@ padding-bottom: 100px;
 .textContainer {
   flex: 1;
   max-width: 50%;
+  margin-left: 50px;
   text-align: left;
 }
 
