@@ -17,6 +17,7 @@ const ProductList = ({ selectedCategories }) => {
   const [wishlist, setWishlist] = useState(new Set());
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState(null); // ✅ user_email 추가
+  const token =sessionStorage.getItem("Authorization");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -67,17 +68,17 @@ const checkLoginStatus = () => {
 
   const toggleWishlist = async (carId) => {
     if (!isLoggedIn) {
-        alert("로그인 후 이용 가능합니다.");
-        return;
-    }
-    if (!userEmail || userEmail.trim() === "") {
-        console.error("⚠️ User Email 없음 (undefined 또는 null)");
-        alert("사용자 정보를 불러오는 중 오류 발생");
-        return;
+      const login =window.confirm("로그인이 필요합니다. 로그인 하시겠습니까?");
+      if(login) {
+        navigate('/login');
+      }
+      return;
     }
     try {
         if (wishlist.has(carId)) {
-            await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`);
+            await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`,{
+              headers: { Authorization: token }
+          });
             setWishlist((prev) => {
                 const newSet = new Set(prev);
                 newSet.delete(carId);
@@ -89,13 +90,15 @@ const checkLoginStatus = () => {
             await axios.post("http://localhost:8080/wishlist/add", {
                 user_email: userEmail.trim(),  // ✅ trim()으로 공백 제거 후 전송
                 car_id: carId,
-            });
+            },{
+              headers: { Authorization: token }
+          });
 
             setWishlist((prev) => new Set([...prev, carId]));
         }
     } catch (error) {
         console.error("⚠️ 위시리스트 추가/제거 중 오류 발생:", error);
-        alert("오류 발생: 위시리스트 변경 실패");
+        
     }
 };
 

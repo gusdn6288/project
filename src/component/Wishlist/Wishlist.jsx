@@ -8,7 +8,7 @@ const Wishlist = () => {
   const [userEmail, setUserEmail] = useState(null);
   const [selected,setSelected] = useState(0);
   const navigate = useNavigate();
-
+  const token = sessionStorage.getItem("Authorization");
   
   useEffect(() => {
     checkLoginStatus();
@@ -35,7 +35,9 @@ const Wishlist = () => {
     if (!userEmail) return;
 
     try {
-      const response = await axios.get(`http://localhost:8080/wishlist/${userEmail}`);
+      const response = await axios.get(`http://localhost:8080/wishlist/${userEmail}`,{
+        headers: { Authorization: token }
+    },);
       setWishlist(response.data);
     } catch (error) {
       console.error("⚠️ 위시리스트를 불러오는 중 오류 발생:", error);
@@ -44,16 +46,14 @@ const Wishlist = () => {
 
   // ✅ 위시리스트에서 삭제
   const removeFromWishlist = async (carId) => {
-    if (!userEmail) {
-      alert("로그인이 필요합니다.");
-      return;
-    }
     if (!carId) {
       alert("올바른 자동차 ID가 아닙니다.");
       return;
     }
     try {
-      await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`);
+      await axios.delete(`http://localhost:8080/wishlist/remove/${carId}/${userEmail}`,{
+        headers: { Authorization: token }
+    });
 
       // 🚀 UI에서 즉시 반영 (삭제된 항목 제외)
       setWishlist((prevWishlist) => prevWishlist.filter((item) => item.car_id !== carId));
