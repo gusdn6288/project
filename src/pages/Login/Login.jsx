@@ -9,7 +9,10 @@ function Login() {
     email: "",
     password: "",
   });
-  const isEmailValid =/^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i.test(data.email);
+  const isEmailValid =
+    /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i.test(
+      data.email
+    );
   const [isEmail, setIsEmail] = useState(false);
   const navigate = useNavigate();
   const [message, setMessage] = useState({
@@ -29,16 +32,22 @@ function Login() {
 
   const validateInput = useCallback(
     (name, value) => {
-      
       const passwordRegEx = /^[A-Za-z0-9]{8,20}$/;
-      const emailRegEx =/^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i
+      const emailRegEx =
+        /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
       let errorMsg = "";
       let valid = false;
 
       if (name === "email") {
         valid = emailRegEx.test(value);
-        errorMsg = valid ? "" : "유효한 이메일 주소를 입력하세요.";
-      } else if (name === "password") {
+        if (!valid) {
+            errorMsg = "유효한 이메일 주소를 입력하세요.";
+        } else if (isEmail === undefined) {
+            errorMsg = "⚠️ 이메일 검증 중...";
+        } else {
+            errorMsg = isEmail  ? "✅ 등록된 이메일입니다." : "⚠️ 등록되지 않은 이메일입니다.";
+        }
+    } else if (name === "password") {
         valid = passwordRegEx.test(value);
         errorMsg = valid
           ? ""
@@ -51,7 +60,7 @@ function Login() {
       setMessage((prev) => ({ ...prev, [name]: errorMsg }));
       setIsValid((prev) => ({ ...prev, [name]: valid }));
     },
-    [data.password]
+    [data]
   );
 
   const handleLogin = useCallback(
@@ -75,7 +84,6 @@ function Login() {
         sessionStorage.setItem("username", response.data.username);
         sessionStorage.setItem("email", data.email);
         axios.defaults.headers.common["Authorization"] = token;
-
         navigate("/");
         window.location.reload();
       } catch (error) {
@@ -100,7 +108,7 @@ function Login() {
     },
     [data, isValid]
   );
-
+  console.log(isEmail);
   return (
     <div className={style.background}>
       <img
@@ -162,10 +170,13 @@ function Login() {
             Object.values(isValid).every(Boolean) ? style.btn : style.fail
           }
         >
-          사용자 계정 만들기
+          로그인 하기
         </button>
         <div className={style.msg}>
-          아이디가 없다면? <span><Link to="/signup">회원가입</Link></span>
+          아이디가 없다면?{" "}
+          <span>
+            <Link to="/signup">회원가입</Link>
+          </span>
         </div>
       </form>
     </div>
