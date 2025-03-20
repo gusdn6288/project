@@ -13,7 +13,7 @@ function Login() {
     /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i.test(
       data.email
     );
-  const [isEmail, setIsEmail] = useState(false);
+  const [isEmail, setIsEmail] = useState(null);
   const navigate = useNavigate();
   const [message, setMessage] = useState({
     email: "",
@@ -36,13 +36,13 @@ function Login() {
       const emailRegEx =
         /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
       let errorMsg = "";
-      let valid = false;
+      let valid = true;
 
       if (name === "email") {
         valid = emailRegEx.test(value);
         if (!valid) {
             errorMsg = "유효한 이메일 주소를 입력하세요.";
-        } else if (isEmail === undefined) {
+        } else if (isEmail === null || isEmail ===undefined) {
             errorMsg = "⚠️ 이메일 검증 중...";
         } else {
             errorMsg = isEmail  ? "✅ 등록된 이메일입니다." : "⚠️ 등록되지 않은 이메일입니다.";
@@ -60,7 +60,7 @@ function Login() {
       setMessage((prev) => ({ ...prev, [name]: errorMsg }));
       setIsValid((prev) => ({ ...prev, [name]: valid }));
     },
-    [data]
+    [isEmail,data]
   );
 
   const handleLogin = useCallback(
@@ -90,7 +90,7 @@ function Login() {
         console.error(error);
       }
     },
-    [data, isValid]
+    [isValid,data]
   );
 
   const emailCheck = useCallback(
@@ -100,15 +100,18 @@ function Login() {
         const response = await axios.post(
           `http://localhost:8080/emailCheck?email=${data.email}`
         );
-
         setIsEmail(response.data);
       } catch (error) {
         console.error(error);
       }
     },
-    [data, isValid]
+    [data.email]
   );
-  console.log(isEmail);
+  useEffect(() => { //isEmail 상태가 변경될 때 자동으로 validateInput 실행
+    if (data.email) {
+      validateInput("email", data.email);
+    }
+  }, [isEmail]);
   return (
     <div className={style.background}>
       <img
@@ -145,7 +148,7 @@ function Login() {
             {message.email}
           </p>
         </div>
-        {isEmail ? (
+        {isEmail && isEmail !== null ? (
           <div>
             <input
               type="password"
